@@ -1,67 +1,22 @@
-package com.example.BackendDislinkt.model;
+package com.example.BackendDislinkt.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
-import java.util.Set;
-
-@Entity
-public class Korisnik {
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class KorisnikDTO {
     private Integer id;
-    @Column(name = "ime", nullable = false)
     private String ime;
-    @Column(name = "prezime", nullable = false)
     private String prezime;
-    @Column(name = "korisnickoIme", nullable = false, unique = true)
     private String korisnickoIme;
-    @Column(name = "lozinka", nullable = false)
     private String lozinka;
-    @Column(name = "email", nullable = false)
     private String email;
-    @Column(name = "brojTelefona")
     private String brojTelefona;
-    @Column(name = "pol")
     private String pol;
-    @Column(name = "datumRodjenja")
     private String datumRodjenja;
-    @Column(name = "biografija")
     private String biografija;
-    @Column(name = "javan")
-    private boolean javan;
-    @Column(name = "aktivan")
     private boolean aktivan;
-    @Column(name = "radnoIskustvo")
+    private boolean javan;
     private String radnoIskustvo;
-    @Column(name = "obrazovanje")
     private String obrazovanje;
-    @Column(name = "vestina")
     private String vestina;
-    @Column(name = "interesovanja")
     private String interesovanja;
-
-    @ManyToMany(mappedBy = "lajkovali")
-    @JsonIgnore
-    Set<Post> lajkovaniPostovi;
-
-    @OneToMany(mappedBy = "korisnikId",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
-    private Set<Komentar> komentari;
-
-    @ManyToMany
-    @JoinTable(
-            name = "koMePrati",
-            joinColumns = @JoinColumn(name = "korisnikId"),
-            inverseJoinColumns = @JoinColumn(name = "korisnikId"))
-    private Set<Korisnik> koMePrati;
-
-    @ManyToMany(mappedBy = "koMePrati")
-    @JsonIgnore
-    Set<Korisnik> kogaPratim;
-
-    public Korisnik() {}
 
     public Integer getId() {
         return id;
@@ -159,22 +114,6 @@ public class Korisnik {
         this.javan = javan;
     }
 
-    public Set<Post> getLajkovaniPostovi() {
-        return lajkovaniPostovi;
-    }
-
-    public void setLajkovaniPostovi(Set<Post> lajkovaniPostovi) {
-        this.lajkovaniPostovi = lajkovaniPostovi;
-    }
-
-    public Set<Komentar> getKomentari() {
-        return komentari;
-    }
-
-    public void setKomentari(Set<Komentar> komentari) {
-        this.komentari = komentari;
-    }
-
     public String getRadnoIskustvo() {
         return radnoIskustvo;
     }
@@ -205,21 +144,5 @@ public class Korisnik {
 
     public void setInteresovanja(String interesovanja) {
         this.interesovanja = interesovanja;
-    }
-
-    public Set<Korisnik> getKoMePrati() {
-        return koMePrati;
-    }
-
-    public void setKoMePrati(Set<Korisnik> koMePrati) {
-        this.koMePrati = koMePrati;
-    }
-
-    public Set<Korisnik> getKogaPratim() {
-        return kogaPratim;
-    }
-
-    public void setKogaPratim(Set<Korisnik> kogaPratim) {
-        this.kogaPratim = kogaPratim;
     }
 }
