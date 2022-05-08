@@ -54,7 +54,7 @@ public class Korisnik {
     @JoinTable(
             name = "koMePrati",
             joinColumns = @JoinColumn(name = "korisnikId"),
-            inverseJoinColumns = @JoinColumn(name = "korisnikId"))
+            inverseJoinColumns = @JoinColumn(name = "ParentId"))
     private Set<Korisnik> koMePrati;
 
     @ManyToMany(mappedBy = "koMePrati")
