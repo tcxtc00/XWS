@@ -37,6 +37,7 @@ func (handler *UserHandler) Register2(ctx *gin.Context) {
 func (handler *UserHandler) GetByEmail(ctx *gin.Context) {
 	email := ctx.Query("email")
 	user, err := handler.Service.GetByEmail(email)
+	fmt.Println(err)
 	if err != nil {
 		ctx.JSON(http.StatusNotFound, err)
 		return

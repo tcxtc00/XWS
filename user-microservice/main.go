@@ -13,11 +13,11 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/jelenac11/SharedProba/jwt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/joho/godotenv"
 	"github.com/soheilhy/cmux"
+	"github.com/tcxtc00/dislinkt-auth/jwt"
 )
 
 var db *gorm.DB
@@ -25,7 +25,7 @@ var err error
 
 func initDB() *gorm.DB {
 
-	db, err = gorm.Open("postgres", "host=localhost port=5432 user=postgres dbname=DevOps-Users sslmode=disable password=zovemsejelenajelena")
+	db, err = gorm.Open("postgres", "host=localhost port=5432 user=postgres dbname=Users sslmode=disable password=admin")
 
 	if err != nil {
 		panic("failed to connect database")
@@ -60,7 +60,7 @@ func initUserHandler(service *service.UserService) *handler.UserHandler {
 
 func handleUserFunc(handler *handler.UserHandler, router *gin.Engine) {
 	router.POST("/register", handler.Register)
-	router.GET("/register2", jwt.GetJwtMiddleware(), jwt.CheckRoles([]string{"read:raed"}), handler.Register2)
+	router.GET("/register2", jwt.GetJwtMiddleware(), jwt.CheckRoles([]string{"read:read"}), handler.Register2)
 	router.GET("/users", handler.GetByEmail)
 	router.PUT("/users", handler.Update)
 }

@@ -13,12 +13,12 @@ require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/gin-gonic/gin v1.8.0 // indirect
 	github.com/goccy/go-json v0.9.7 // indirect
-	github.com/jelenac11/SharedProba v0.0.0-20220531195545-6a3725e5d438 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.1 // indirect
+	github.com/tcxtc00/dislinkt-auth v0.0.0-20220603201353-ce57c37b1b8f // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	golang.org/x/net v0.0.0-20211112202133-69e39bad7dc2 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect

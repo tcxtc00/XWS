@@ -48,16 +48,6 @@ github.com/gorilla/handlers v1.5.1/go.mod h1:t8XrUpc4KVXb7HGyJ4/cEnwQiaxrX/hz1Zv
 github.com/gorilla/mux v1.7.4/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
 github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
 github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
-github.com/jelenac11/SharedProba v0.0.0-20220531075419-1d1e5113b72a h1:5JlaxbHBXpeaiEq2LTJ+DXg7oM6RxT7tM0D9b78i1i0=
-github.com/jelenac11/SharedProba v0.0.0-20220531075419-1d1e5113b72a/go.mod h1:utlTMNqZpqzONjQsp4szqXtE1wkoPKIHmfoe+dVxSfg=
-github.com/jelenac11/SharedProba v0.0.0-20220531083451-3195fb312285 h1:0683bVRGPvUH5gVGWM/0b8rLyc3Pi0ybHHdATReeovM=
-github.com/jelenac11/SharedProba v0.0.0-20220531083451-3195fb312285/go.mod h1:utlTMNqZpqzONjQsp4szqXtE1wkoPKIHmfoe+dVxSfg=
-github.com/jelenac11/SharedProba v0.0.0-20220531191344-3c94276a43c6 h1:wQNlOzb6ylA8zLRoiq1jphmPTuMfPm8j1ZHXl0p591c=
-github.com/jelenac11/SharedProba v0.0.0-20220531191344-3c94276a43c6/go.mod h1:utlTMNqZpqzONjQsp4szqXtE1wkoPKIHmfoe+dVxSfg=
-github.com/jelenac11/SharedProba v0.0.0-20220531193238-910a2c42e1e6 h1:GjvzINuQzpbb0ON36Yo/Mhi9baPR3p4V69P/MARBRnc=
-github.com/jelenac11/SharedProba v0.0.0-20220531193238-910a2c42e1e6/go.mod h1:utlTMNqZpqzONjQsp4szqXtE1wkoPKIHmfoe+dVxSfg=
-github.com/jelenac11/SharedProba v0.0.0-20220531195545-6a3725e5d438 h1:a3YmZIANBCRD+BfQqpY78lNUsCEF2KfKOD/myBnJ6xA=
-github.com/jelenac11/SharedProba v0.0.0-20220531195545-6a3725e5d438/go.mod h1:utlTMNqZpqzONjQsp4szqXtE1wkoPKIHmfoe+dVxSfg=
 github.com/jinzhu/gorm v1.9.16 h1:+IyIjPEABKRpsu/F8OvDPy9fyQlgsg2luMV2ZIH5i5o=
 github.com/jinzhu/gorm v1.9.16/go.mod h1:G3LB3wezTOWM2ITLzPxEXgSkOXAntiLHS7UdBefADcs=
 github.com/jinzhu/inflection v1.0.0 h1:K317FqzuhWc8YvSVlFMCCUb36O/S9MCKRDI7QkRKD/E=
@@ -110,6 +100,8 @@ github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.1 h1:5TQK59W5E3v0r2duFAb7P95B6hEeOyEnHRa8MjYSMTY=
 github.com/stretchr/testify v1.7.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
+github.com/tcxtc00/dislinkt-auth v0.0.0-20220603201353-ce57c37b1b8f h1:rzESUs23PMJq2SA+3/xx7e9WcoYkFRqOeYzqggEk/80=
+github.com/tcxtc00/dislinkt-auth v0.0.0-20220603201353-ce57c37b1b8f/go.mod h1:xzhW7NzUKckHI4OjTe/Myactui+0NIt0zVqOkKhI9Ek=
 github.com/ugorji/go v1.1.7/go.mod h1:kZn38zHttfInRq0xu/PH0az30d+z6vm202qpg1oXVMw=
 github.com/ugorji/go v1.2.7/go.mod h1:nF9osbDWLy6bDVv/Rtoh6QgnvNDpmCalQV5urGCCS6M=
 github.com/ugorji/go/codec v1.1.7/go.mod h1:Ax+UKWsSmolVDwsd+7N3ZtXu+yMGCf907BLYF3GoBXY=

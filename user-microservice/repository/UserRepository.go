@@ -14,6 +14,7 @@ import (
 type IUserRepository interface {
 	AddUser(*model.User) (int, error)
 	DeleteUser(int) error
+	GetByID(int) (*model.User, error)
 	GetByEmail(string) (*dto.UserResponseDTO, error)
 	Update(*model.User) (*dto.UserResponseDTO, error)
 }
@@ -48,6 +49,17 @@ func (repo *UserRepository) DeleteUser(id int) error {
 	return nil
 }
 
+func (repo *UserRepository) GetByID(id int) (*model.User, error) {
+	userEntity := model.User{
+		ID: id,
+	}
+	if err := repo.Database.Where("ID = ?", id).First(&userEntity).Error; err != nil {
+		return nil, errors.New(fmt.Sprintf("User with ID %d not found", id))
+	}
+
+	return &userEntity, nil
+}
+
 func (repo *UserRepository) GetByEmail(email string) (*dto.UserResponseDTO, error) {
 	userEntity := model.User{
 		Email: email,
@@ -60,13 +72,6 @@ func (repo *UserRepository) GetByEmail(email string) (*dto.UserResponseDTO, erro
 }
 
 func (repo *UserRepository) Update(user *model.User) (*dto.UserResponseDTO, error) {
-	userEntity := model.User{
-		ID: user.ID,
-	}
-	if err := repo.Database.Where("ID = ?", user.ID).First(&userEntity).Error; err != nil {
-		return nil, errors.New(fmt.Sprintf("User with ID %d not found", user.ID))
-	}
-
 	result := repo.Database.Save(&user)
 
 	if result.Error != nil {

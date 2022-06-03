@@ -20,6 +20,8 @@ type UserService struct {
 
 type IUserService interface {
 	Register(*dto.RegistrationRequestDTO) (int, error)
+	GetByEmail(string) (*dto.UserResponseDTO, error)
+	Update(*dto.UserUpdateDTO) (*dto.UserResponseDTO, error)
 }
 
 func NewUserService(userRepository repository.IUserRepository, auth0Client auth0.Auth0Client) IUserService {
@@ -56,12 +58,15 @@ func (service *UserService) Register(userToRegister *dto.RegistrationRequestDTO)
 		return -1, err
 	}
 
-	if _, err := service.Auth0Client.Register(userToRegister.Email, userToRegister.Password); err != nil {
+	if auth0ID, err := service.Auth0Client.Register(userToRegister.Email, userToRegister.Password); err != nil {
 		fmt.Println(err)
 		if err = service.UserRepo.DeleteUser(addedUserID); err != nil {
 			return -1, err
 		}
 		return -1, err
+	} else {
+		user.Auth0ID = auth0ID
+		service.UserRepo.Update(user)
 	}
 
 	return addedUserID, nil
@@ -77,7 +82,14 @@ func (service *UserService) GetByEmail(email string) (*dto.UserResponseDTO, erro
 }
 
 func (service *UserService) Update(userToUpdate *dto.UserUpdateDTO) (*dto.UserResponseDTO, error) {
+	userEntity, errr := service.UserRepo.GetByID(userToUpdate.ID)
+	if errr != nil {
+		return nil, errr
+	}
+
 	user := mapper.UserUpdateDTOToUser(userToUpdate)
+	user.Password = userEntity.Password
+	user.Auth0ID = userEntity.Auth0ID
 
 	err := user.Validate()
 	if err != nil {
@@ -90,13 +102,10 @@ func (service *UserService) Update(userToUpdate *dto.UserUpdateDTO) (*dto.UserRe
 		return nil, err
 	}
 
-	// if _, err := service.Auth0Client.Register(userToRegister.Email, userToRegister.Password); err != nil {
-	// 	fmt.Println(err)
-	// 	if err = service.UserRepo.DeleteUser(addedUserID); err != nil {
-	// 		return -1, err
-	// 	}
-	// 	return -1, err
-	// }
+	if err := service.Auth0Client.Update(user.Email, user.Auth0ID); err != nil {
+		fmt.Println(err)
+		return nil, err
+	}
 
 	return userDTO, nil
 }

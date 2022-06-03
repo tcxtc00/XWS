@@ -24,6 +24,7 @@ func UserToDTO(userEntity *model.User) *dto.UserResponseDTO {
 	var user dto.UserResponseDTO
 
 	user.ID = userEntity.ID
+	user.Auth0ID = userEntity.Auth0ID
 	user.FirstName = userEntity.FirstName
 	user.LastName = userEntity.LastName
 	user.Email = userEntity.Email
