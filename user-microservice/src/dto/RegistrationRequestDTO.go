@@ -1,6 +1,6 @@
 package dto
 
-import "user-ms/model"
+import "user-ms/src/model"
 
 type RegistrationRequestDTO struct {
 	Username    string

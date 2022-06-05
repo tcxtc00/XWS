@@ -1,10 +1,9 @@
 package dto
 
-import "user-ms/model"
+import "user-ms/src/model"
 
-type UserResponseDTO struct {
+type UserUpdateDTO struct {
 	ID             int
-	Auth0ID        string
 	FirstName      string
 	LastName       string
 	Email          string

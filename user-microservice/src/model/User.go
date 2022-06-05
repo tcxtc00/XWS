@@ -20,7 +20,7 @@ type User struct {
 	FirstName      string  `json:"first_name" validate:"required"`
 	LastName       string  `json:"last_name" validate:"required"`
 	Email          string  `json:"email" validate:"required,email" gorm:"unique"`
-	Password       string  `json:"password"`
+	Password       string  `json:"password" validate:"required"`
 	PhoneNumber    string  `json:"phone_number"`
 	Gender         *Gender `json:"gender" validate:"required"`
 	Username       string  `json:"user_name" gorm:"unique" validate:"required"`

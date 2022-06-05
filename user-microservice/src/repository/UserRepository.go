@@ -3,9 +3,9 @@ package repository
 import (
 	"errors"
 	"fmt"
-	"user-ms/dto"
-	"user-ms/mapper"
-	"user-ms/model"
+	"user-ms/src/dto"
+	"user-ms/src/mapper"
+	"user-ms/src/model"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -14,9 +14,9 @@ import (
 type IUserRepository interface {
 	AddUser(*model.User) (int, error)
 	DeleteUser(int) error
+	Update(*model.User) (*dto.UserResponseDTO, error)
 	GetByID(int) (*model.User, error)
 	GetByEmail(string) (*dto.UserResponseDTO, error)
-	Update(*model.User) (*dto.UserResponseDTO, error)
 }
 
 func NewUserRepository(database *gorm.DB) IUserRepository {
@@ -49,6 +49,16 @@ func (repo *UserRepository) DeleteUser(id int) error {
 	return nil
 }
 
+func (repo *UserRepository) Update(user *model.User) (*dto.UserResponseDTO, error) {
+	result := repo.Database.Save(&user)
+
+	if result.Error != nil {
+		return nil, result.Error
+	}
+
+	return mapper.UserToDTO(user), nil
+}
+
 func (repo *UserRepository) GetByID(id int) (*model.User, error) {
 	userEntity := model.User{
 		ID: id,
@@ -69,14 +79,4 @@ func (repo *UserRepository) GetByEmail(email string) (*dto.UserResponseDTO, erro
 	}
 
 	return mapper.UserToDTO(&userEntity), nil
-}
-
-func (repo *UserRepository) Update(user *model.User) (*dto.UserResponseDTO, error) {
-	result := repo.Database.Save(&user)
-
-	if result.Error != nil {
-		return nil, result.Error
-	}
-
-	return mapper.UserToDTO(user), nil
 }

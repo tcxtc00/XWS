@@ -3,8 +3,8 @@ package handler
 import (
 	"fmt"
 	"net/http"
-	"user-ms/dto"
-	"user-ms/service"
+	"user-ms/src/dto"
+	"user-ms/src/service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -28,10 +28,6 @@ func (handler *UserHandler) Register(ctx *gin.Context) {
 	}
 
 	ctx.JSON(http.StatusCreated, userID)
-}
-
-func (handler *UserHandler) Register2(ctx *gin.Context) {
-	fmt.Println("usao")
 }
 
 func (handler *UserHandler) GetByEmail(ctx *gin.Context) {
@@ -61,3 +57,4 @@ func (handler *UserHandler) Update(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, userDTO)
 }
+

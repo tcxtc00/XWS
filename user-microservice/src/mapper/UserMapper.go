@@ -1,13 +1,13 @@
 package mapper
 
 import (
-	"user-ms/dto"
-	"user-ms/model"
+	"user-ms/src/dto"
+	"user-ms/src/model"
 )
 
 func RegistrationRequestDTOToUser(registeredUserDto *dto.RegistrationRequestDTO) *model.User {
-	var user model.User
 
+	var user model.User
 	user.Username = registeredUserDto.Username
 	user.FirstName = registeredUserDto.FirstName
 	user.LastName = registeredUserDto.LastName
@@ -16,7 +16,6 @@ func RegistrationRequestDTOToUser(registeredUserDto *dto.RegistrationRequestDTO)
 	user.Email = registeredUserDto.Email
 	user.PhoneNumber = registeredUserDto.PhoneNumber
 	user.Password = registeredUserDto.Password
-
 	return &user
 }
 

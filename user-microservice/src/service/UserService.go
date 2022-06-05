@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
-	"user-ms/auth0"
-	"user-ms/dto"
-	"user-ms/mapper"
-	"user-ms/repository"
+	"user-ms/src/auth0"
+	"user-ms/src/dto"
+	"user-ms/src/mapper"
+	"user-ms/src/repository"
 
 	"golang.org/x/crypto/bcrypt"
 )
